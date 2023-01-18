@@ -1,1 +1,1 @@
-fazer o commit na master
+fazer o pull na origin master para minha branch.
