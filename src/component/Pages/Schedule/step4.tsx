@@ -6,7 +6,7 @@ export default function Step4(props: any) {
     return (
         <div className='container' style={{ height: "90vh" }}>
             <div className="row">
-                <div className="col-12 col-md-6  p-5" >
+                <div className="col-12 col-md-6 mt-5 p-5" >
                     <div className='bg-white rounded '>
                         <div className='rounded d-flex justify-content-between' style={{ background: "black" }}>
                             <img src={logo} style={{
@@ -31,7 +31,7 @@ export default function Step4(props: any) {
 
                     </div>
                 </div>
-                <div className="col-12 col-md-6 d-flex justify-content-center align-items-center">
+                <div className="col-12 col-md-6 mt-5 d-flex justify-content-center align-items-center">
                     <img width={300} src={props.data.worker.image} />
                 </div>
             </div>
