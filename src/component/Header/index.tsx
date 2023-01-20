@@ -15,7 +15,6 @@ export default function Header() {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{
-            position: "fixed",
             top: 0,
             left: 0,
             width: "100%",
@@ -36,7 +35,7 @@ export default function Header() {
                             <a className="nav-link" href="#workers">Barbeiros</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#" onClick={redirectToSchedule}>Agende</a>
+                            <a className="nav-link" href="/pagina3" >Agende</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">Depoimentos</a>
