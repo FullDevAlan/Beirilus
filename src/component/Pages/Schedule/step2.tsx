@@ -6,6 +6,7 @@ export default function Step2({ data, onSelect }: any) {
       <div className="d-flex justify-content-center">
         {data.length === 0 ? (
           <div style={{ color: "#FFCC00", fontSize: "22px" }}>Loading...</div>
+          
         ) : (
           data.map((item: any) => (
             <div
