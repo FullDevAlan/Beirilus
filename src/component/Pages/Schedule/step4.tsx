@@ -10,13 +10,15 @@ export default function Step4({ data, resetSteps }: any) {
     const formatedTime = (time: string) =>
       parseInt(time) < 10 ? `0${parseInt(time)}` : parseInt(time);
 
-    const initialTime = formatedTime(time[0]);
+      const initialTime = formatedTime(time[0]);
+      const endTime = formatedTime(time[1]);
 
-    const formatedDate = `${date}T${initialTime}:00:00.000Z`;
+    const startDate = `${date}T${initialTime}:00:00.000Z`;
+    const endDate = `${date}T${endTime}:00:00.000Z`;
 
     const payload = {
       customerId: "63c1e57f350837e9b155344e",
-      date: formatedDate,
+      startDate, endDate,
       servicesId: data.service.id,
       barberId: data.worker.id,
     };
@@ -39,6 +41,9 @@ export default function Step4({ data, resetSteps }: any) {
     try {
       await axios.post("https://beirilus.onrender.com/booking", finalPayload);
       resetSteps();
+
+      //aqui redirecionar para a pagina agendamentos **************************
+
     } catch (err) {
       console.log(err);
     }
