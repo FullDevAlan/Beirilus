@@ -1,8 +1,10 @@
 import React from "react";
 import logo from "../../../assets/img/logo.png";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Step4({ data, resetSteps }: any) {
+  const navigate = useNavigate();
   const formatedPayload: any = () => {
     const date = new Date(data.date).toISOString().split("T")[0];
     const time = data.time.name.split(" as ");
@@ -11,14 +13,14 @@ export default function Step4({ data, resetSteps }: any) {
       parseInt(time) < 10 ? `0${parseInt(time)}` : parseInt(time);
 
       const initialTime = formatedTime(time[0]);
-      const endTime = formatedTime(time[1]);
+  //    const endTime = formatedTime(time[1]);
 
     const startDate = `${date}T${initialTime}:00:00.000Z`;
-    const endDate = `${date}T${endTime}:00:00.000Z`;
+  //  const endDate = `${date}T${endTime}:00:00.000Z`;
 
     const payload = {
       customerId: "63c1e57f350837e9b155344e",
-      startDate, endDate,
+      startDate,// endDate,
       servicesId: data.service.id,
       barberId: data.worker.id,
     };
@@ -40,8 +42,7 @@ export default function Step4({ data, resetSteps }: any) {
 
     try {
       await axios.post("https://beirilus.onrender.com/booking", finalPayload);
-      resetSteps();
-
+      navigate("/")
       //aqui redirecionar para a pagina agendamentos **************************
 
     } catch (err) {
