@@ -1,10 +1,11 @@
 import React from "react";
 import logo from "../../../assets/img/logo.png";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import Card from "./card";
 
 export default function Step4({ data, resetSteps }: any) {
-  const navigate = useNavigate();
+  const [showcard, setShowCard] = React.useState(false)
+  const [getLinks, setGetLinks] = React.useState({})
   const formatedPayload: any = () => {
     const date = new Date(data.date).toISOString().split("T")[0];
     const time = data.time.name.split(" as ");
@@ -12,11 +13,11 @@ export default function Step4({ data, resetSteps }: any) {
     const formatedTime = (time: string) =>
       parseInt(time) < 10 ? `0${parseInt(time)}` : parseInt(time);
 
-      const initialTime = formatedTime(time[0]);
-  //    const endTime = formatedTime(time[1]);
+    const initialTime = formatedTime(time[0]);
+    //    const endTime = formatedTime(time[1]);
 
     const startDate = `${date}T${initialTime}:00:00.000Z`;
-  //  const endDate = `${date}T${endTime}:00:00.000Z`;
+    //  const endDate = `${date}T${endTime}:00:00.000Z`;
 
     const payload = {
       customerId: "63c1e57f350837e9b155344e",
@@ -31,7 +32,6 @@ export default function Step4({ data, resetSteps }: any) {
   const getBookingListApi = async () => {
     try {
       const response = await axios.get("https://beirilus.onrender.com/booking");
-      console.log("response", response.data);
     } catch (err) {
       console.log(err);
     }
@@ -41,10 +41,9 @@ export default function Step4({ data, resetSteps }: any) {
     const finalPayload = formatedPayload();
 
     try {
-      await axios.post("https://beirilus.onrender.com/booking", finalPayload);
-      navigate("/")
-      //aqui redirecionar para a pagina agendamentos **************************
-
+      const { data } = await axios.post("https://beirilus.onrender.com/booking", finalPayload);
+      setGetLinks({ linkGoogle: data.bookingCreate.linkGoogle, linkOutlook: data.bookingCreate.linkOutlook })
+      setShowCard(true)
     } catch (err) {
       console.log(err);
     }
@@ -58,7 +57,7 @@ export default function Step4({ data, resetSteps }: any) {
     <div className="container" style={{ height: "90vh" }}>
       <div className="row">
         <div className="col-12 col-md-6 mt-5 p-5">
-          <div className="bg-white rounded ">
+          {showcard ? <Card getLinks={getLinks} /> : <>          <div className="bg-white rounded ">
             <div
               className="rounded d-flex justify-content-between"
               style={{ background: "black" }}
@@ -95,9 +94,10 @@ export default function Step4({ data, resetSteps }: any) {
               <p className="text-black m-0">{data.time.name}</p>
             </div>
           </div>
+          </>}
         </div>
       </div>
-      <div className="row">
+      {!showcard && <div className="row">
         <div className="col-6 d-flex justify-content-center">
           <button
             className="btn btn-primary text-black me-2"
@@ -109,7 +109,8 @@ export default function Step4({ data, resetSteps }: any) {
             Cancelar
           </button>
         </div>
-      </div>
+      </div>}
+
     </div>
   );
 }
