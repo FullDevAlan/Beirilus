@@ -1,0 +1,11 @@
+.bg {
+    background: url("../../../assets/img/bg1.png");
+    object-fit: cover;
+    height: 100vh;
+}
+
+.bg2 {
+    background: url("../../../assets/img/bg2.png");
+    object-fit: cover;
+    height: 110%;
+}
