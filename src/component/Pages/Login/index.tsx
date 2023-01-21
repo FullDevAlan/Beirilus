@@ -32,7 +32,7 @@ export default function Login(): JSX.Element {
         <div>
             <form className="login-form" onSubmit={login}>
                 <div className="wrap-input">
-                    <label className="login-form-title">Acesse sua conta</label>
+                    <label className="login-form-title" >Acesse sua conta</label>
                     <div className="wrap-input">
                         <label htmlFor="email">Email</label>
                         <input
@@ -42,7 +42,7 @@ export default function Login(): JSX.Element {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)} />
                     </div>
-                    <div className="field">
+                    <div className="wrap-input">
                         <label htmlFor="passoword">Senha</label>
                         <input
                             type="passoword"
