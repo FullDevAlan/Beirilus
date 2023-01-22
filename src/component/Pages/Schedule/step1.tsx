@@ -1,6 +1,12 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 
-export default function Step1(props: any) {
+interface PropsServices {
+    name: string;
+    price: string;
+}
+
+export default function Step1(props:any, {name, price}: PropsServices) {
 
     const services = [
         {
@@ -41,8 +47,11 @@ export default function Step1(props: any) {
         },
     ]
 
+    
     return (
         <div style={{ padding: 10 }}>
+
+            <div style={{height: '50px', width: '50px', background: 'red'}}></div>
             <div className='d-flex flex-wrap justify-content-center' style={{ padding: 30 }}>
                 {services.map(item => (
                     <div onClick={() => {

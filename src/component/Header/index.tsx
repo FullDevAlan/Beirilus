@@ -1,6 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" rel="stylesheet"></link>
+
 import logo from '../../assets/img/logo.png'
 
 export default function Header() {
@@ -13,7 +15,6 @@ export default function Header() {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{
-            position: "fixed",
             top: 0,
             left: 0,
             width: "100%",
@@ -34,7 +35,7 @@ export default function Header() {
                             <a className="nav-link" href="#workers">Barbeiros</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#" onClick={redirectToSchedule}>Agende</a>
+                            <a className="nav-link" href="/pagina3" >Agende</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">Depoimentos</a>
